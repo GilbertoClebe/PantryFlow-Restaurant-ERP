@@ -1,7 +1,7 @@
 from sqlalchemy import String, Text, Table, Column, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Optional, List
-from ingredient_model import Ingredient
+
 from ..database import Base
 
 recipe_ingredient_assosiation = Table(
@@ -18,6 +18,6 @@ class Recipe() :
     name: Mapped[str] = mapped_column(String(120))
     description: Mapped[str] = mapped_column(Text)
     price: Mapped[float] = mapped_column()
-    ingredients_ids: Mapped[Optional[List["Ingredient"]]] = relationship("Ingredient", back_populates="recipes_ids")
+    ingredients: Mapped[Optional[List["Ingredient"]]] = relationship("Ingredient", back_populates="recipes", secondary=recipe_ingredient_assosiation)
     
     

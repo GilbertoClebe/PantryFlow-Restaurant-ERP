@@ -2,7 +2,7 @@
 from sqlalchemy import String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship, DeclarativeBase
 from typing import Optional, List
-from recipe_model import Recipe
+
 from ..database import Base
 
 class Ingredient(Base) :
@@ -12,5 +12,5 @@ class Ingredient(Base) :
     name: Mapped[str] = mapped_column(String(120))
     price: Mapped[float] = mapped_column()
     quantity_kg: Mapped[float] = mapped_column()
-    recipes_ids: Mapped[Optional[List["Recipe"]]] = relationship("Recipe", back_populates="ingredients_ids")
+    recipes: Mapped[Optional[List["Recipe"]]] = relationship("Recipe", back_populates="ingredients")
     
