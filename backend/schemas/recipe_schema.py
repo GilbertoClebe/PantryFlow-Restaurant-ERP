@@ -20,5 +20,5 @@ class RecipeUpdate(BaseModel) :
     price: Optional[float] = Field(gt=0)
     model_config = ConfigDict({"from_attributes": True})
     
-
+RecipeResponse.model_rebuild()
     

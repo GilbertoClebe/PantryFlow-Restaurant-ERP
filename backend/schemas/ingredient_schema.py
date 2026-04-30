@@ -27,4 +27,5 @@ class IngredientSample(BaseModel) :
     name: str
     price: float = Field(gt=0)
     model_config = ConfigDict({"from_attributes": True})
+    
 IngredientResponse.model_rebuild()
