@@ -20,7 +20,7 @@ class IngredientUpdate(BaseModel) :
     name: Optional[str] = None
     price: Optional[float] = Field(gt=0) or None
     quantity_kg: Optional[float] = Field(gt=0) or None
-    recipes_ids: Optional[List[int]] = None
+
 
 class IngredientSample(BaseModel) :
     id: int
