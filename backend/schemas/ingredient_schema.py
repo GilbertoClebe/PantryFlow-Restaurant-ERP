@@ -7,11 +7,11 @@ class IngredientBase(BaseModel) :
     price: float = Field(gt=0)
     quantity_kg: float = Field(gt=0)
     
-class IngredientCreate(IngredientBase()) :
+class IngredientCreate(IngredientBase) :
     recipes: Optional[List["RecipeResponse"]]   
     model_config = ConfigDict({"from_attributes": True})
     
-class IngredientResponse(IngredientBase()) :
+class IngredientResponse(IngredientBase) :
     id: int
     recipes: Optional[List["RecipeResponse"]]   
     model_config = ConfigDict({"from_attributes": True})
@@ -21,5 +21,10 @@ class IngredientUpdate(BaseModel) :
     price: Optional[float] = Field(gt=0)
     quantity_kg: Optional[float] = Field(gt=0)
     recipes: Optional[List["RecipeResponse"]]  
-    
+
+class IngredientSample(BaseModel) :
+    id: int
+    name: str
+    price: float
+    model_config = ConfigDict({"from_attributes": True})
 IngredientResponse.model_rebuild()
