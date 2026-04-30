@@ -8,16 +8,16 @@ class RecipeBase(BaseModel) :
     model_config = ConfigDict({"from_attributes": True})
     
 class RecipeCreate(RecipeBase) :
-    ingredients_ids: Optional[List[int]]
+    ingredients_ids: Optional[List[int]] = None
 
 class RecipeResponse(RecipeBase) :
     id: int
-    ingredients_ids: Optional[List[int]]
+    ingredients_ids: Optional[List[int]] = None
 
 class RecipeUpdate(BaseModel) :
-    name: Optional[str]
-    description: Optional[str]
-    price: Optional[float] = Field(gt=0)
+    name: Optional[str] = None
+    description: Optional[str] = None
+    price: Optional[float] = Field(gt=0) or None
     model_config = ConfigDict({"from_attributes": True})
     
 RecipeResponse.model_rebuild()

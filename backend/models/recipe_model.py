@@ -2,22 +2,23 @@ from sqlalchemy import String, Text, Table, Column, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Optional, List
 
+from models import ingredient_model as model
 from database import Base
 
 recipe_ingredient_assosiation = Table(
     "recipe_ingredient",
     Base.metadata, 
     Column("recipe_id", ForeignKey("recipes.id"), primary_key=True),
-    Column("ingrediente_id", ForeignKey("ingredients.id"), primary_key=True)
+    Column("ingredient_id", ForeignKey("ingredients.id"), primary_key=True)
 )
 
-class Recipe() :
+class Recipe(Base) :
     __tablename__ = "recipes"
     
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(String(120))
     description: Mapped[str] = mapped_column(Text)
     price: Mapped[float] = mapped_column()
-    ingredients: Mapped[Optional[List["Ingredient"]]] = relationship("Ingredient", back_populates="recipes", secondary=recipe_ingredient_assosiation)
+    ingredients: Mapped[Optional[List["model.Ingredient"]]] = relationship("Ingredient", back_populates="recipes", secondary=recipe_ingredient_assosiation)
     
     

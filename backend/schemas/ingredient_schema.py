@@ -8,19 +8,19 @@ class IngredientBase(BaseModel) :
     quantity_kg: float = Field(gt=0)
     
 class IngredientCreate(IngredientBase) :
-    recipes_ids: Optional[List[int]]   
+    recipes_ids: Optional[List[int]] = None 
     model_config = ConfigDict({"from_attributes": True})
     
 class IngredientResponse(IngredientBase) :
     id: int
-    recipes_ids: Optional[List[int]]   
+    recipes_ids: Optional[List[int]]    = None
     model_config = ConfigDict({"from_attributes": True})
     
 class IngredientUpdate(BaseModel) :
-    name: Optional[str] 
-    price: Optional[float] = Field(gt=0)
-    quantity_kg: Optional[float] = Field(gt=0)
-    recipes_ids: Optional[List[int]]  
+    name: Optional[str] = None
+    price: Optional[float] = Field(gt=0) or None
+    quantity_kg: Optional[float] = Field(gt=0) or None
+    recipes_ids: Optional[List[int]] = None
 
 class IngredientSample(BaseModel) :
     id: int

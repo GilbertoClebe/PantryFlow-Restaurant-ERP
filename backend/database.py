@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, DeclarativeBase
 class Base(DeclarativeBase) :
     pass
 
-DATABASE_URL = "sqlite:///./psydian.db"
+DATABASE_URL = "sqlite:///./pantry.db"
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
